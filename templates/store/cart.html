@@ -1,0 +1,290 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block content %}
+{% load mathfilters %}
+<div class="top" style="height:130px">!</div>
+
+
+
+
+{% if not cart_items%}
+<div class="row ">
+<div class="d-flex p-3 px-5  col-sm-12 col-md-6 col-lg-6">
+<div style="width:;"><img style="margin-left:auto; " class="img-fluid" src="{% static 'images/gif/addtocart.gif' %}" alt=""></div>
+</div>
+<div class="col-12 col-sm-12 col-md-6 col-lg-6 d-flex mt-5">
+<div class="one mt-5 ">
+<h2>Your shopping cart is empty</h2>
+<br>
+<div class="text-center">
+   <a href="{% url 'store' %}" class="btn btn-primary pt-3 pb-3" style="border-radius:20px;">continue shopping</a>
+</div>
+</div>
+</div>
+</div>
+
+{% else%}
+<div class="top" style="height:50px">!</div>
+<div class="container">
+   <div class="row">
+       <div class="col-xl-12 text-fluid">
+           
+               <h2>Shopping Cart</h2>
+           
+   </div>
+</div>
+<section class="cart_area p-1 row">
+   <div class="container ">
+     <div class="cart_inner " >
+       <div class="table-responsive">
+         
+                   <div  style="overflow-x: scroll;"> 
+         <table class="table">
+           <thead>
+             <tr>
+               <th scope="col">Product</th>
+               <th scope="col">Price</th>
+               <th scope="col">Size</th>
+
+               <th scope="col">Quantity</th>
+               <th scope="col">Remove</th>
+               <th scope="col">Total</th>
+             </tr>
+           </thead>
+          
+           <tbody>        
+               {% for item in cart_items%}
+             <tr>
+               <td>
+                 <div class="media ">
+                   <div class="d-flex">
+                     <img src="{{item.product.image1.url}}" style="width:120px; height:140px;"  alt="" />
+                   </div>
+                   <div class="media-body">
+                     <p>{{item.product.product_name}}</p>
+                   </div>
+                 </div>
+               </td>
+               <td>
+                
+                 <div class="d-flex align-items-center justify-content-center mt-2">
+                   {% if item.product.offer_perc > 0 %}
+                    <p>₹{{item.product.offer_price}} <small><strike>{{item.product.price}}</strike></small></p>
+                  {% else %}
+                  <p>₹{{item.product.price}}</p>
+                  {% endif %}
+                </div>
+                 
+                 <div class="d-flex align-items-center justify-content-center mt-2">
+                </div>
+               </td>
+               <td>
+
+                
+                 
+                <div class="d-flex align-items-center justify-content-center mt-2">
+                 
+                <h6 class="text-muted ml-2">{{item.size}}&nbsp&nbsp&nbsp&nbsp</h6>
+                 
+                </div>
+                
+             </div>      
+              
+               </td>
+               <td>
+                 <div class="product_count  d-flex product_data col-sm-12"  >
+                  {% if item.product.stock > 0 %}
+                      {% if item.quantity >= 1 %}
+                      
+                     <a  class=" input-group-text " onclick="changeQuantitySub('{{item.product.id}}')" id="changeQuantitySub" ><i class="fas fa-minus mt-3" style="color: brown;"></i></a>
+                    {% endif %}
+                   <div ></div>
+                   <input type="text" class="d-flex justify-content-center mx-3 " name="qty" id="{{item.product.id}}" value="{{item.quantity}}">
+                   {% csrf_token %}
+                   <a  class=" input-group-text" onclick="changeQuantityAdd('{{item.product.id}}')" id="changeQuantityAdd" ><i class="fas fa-plus mt-3" style="color: brown;"></i></a>
+                  {% else %}
+                  <div >
+                  <p style="color:red;">Out of Stock</p>
+                  
+                </div>
+                 </div>
+                 {% endif %}
+               </td>
+               <td>
+                <a   data-bs-toggle="modal" data-bs-target="#delete_cart_product-{{item.id}}">
+                  <button type="submit"  class="btnn btn-danger"style="width:80px;">Remove</button>
+                  </a>
+                </td>
+                <div class="modal fade" id="delete_cart_product-{{item.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
+                        
+                      </div>
+                      <div class="modal-body">
+                        <p>Do you really want to remove <b>{{item.product.product_name}}</b> from your Cart ?</p>
+                      </div>
+                      <div class="modal-footr d-flex justify-content-between p-3">
+                        <button type="button" class="btnn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        
+                        <a href="{% url 'delete_cart_product' item.id %}"><button  class="btnn btn-danger " style="background:dark-red;"> confirm</button></a>
+                      </div>
+                    </div>
+                  </div>
+                  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+                </div>
+                <td>
+
+                
+                 
+                <div class="d-flex align-items-center justify-content-center mt-2">
+
+                  {% if item.product.offer_perc > 0 %}
+
+                  ₹&nbsp <h5  id="a{{item.product.id}}">{{ item.total}}</h5><h6 class="text-muted ml-2"></h6>
+                  {% else %}
+                  ₹&nbsp<h5 id="a{{item.product.id}}">{{ item.total}}</h5><h6 class="text-muted ml-2"></h6>
+                  {% endif %}
+               
+                </div>
+                
+             </div>      
+              
+               </td>
+             </tr>
+             {% endfor %}
+           </tbody>
+         </table>
+        </div>
+         <div class="checkout_btn_inner float-right col-sm-12">
+        
+           <a class="btn_1 checkout_btn_1" href="{% url 'review_cart' %}">Proceed to checkout</a>
+      
+         </div>
+       </div>
+     </div>
+ </section>
+</div>
+ {% endif %}
+
+<script>
+  function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+          const cookies = document.cookie.split(';');
+          for (let i = 0; i < cookies.length; i++) {
+              const cookie = cookies[i].trim();
+              // Does this cookie string begin with the name we want?
+              if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+              }
+          }
+      }
+      return cookieValue;
+  }
+  var csrftoken = getCookie('csrftoken');
+
+  function changeQuantityAdd(prod_id)
+  {
+     
+      
+     
+      console.log('hello')
+      sendData();
+      console.log('hello')
+      function sendData(){
+          console.log('hello')
+          fetch('/cart/update_add_cart',{
+              method : "POST",
+              headers : {
+                  "Content-type" : "application/json",
+                  "X-CSRFToken": csrftoken,
+              },
+              body:JSON.stringify({
+                  
+                  product:prod_id,
+                  
+              }),
+          })
+          .then(response => response.json())
+          .then((data) => { 
+            console.log(data)
+            document.getElementById(data.prod).value = data.quantity;
+            const refer = document.getElementById('a'+prod_id);
+            refer.innerText = data.total;
+            
+            
+              
+      });
+  }
+
+}
+  
+
+
+
+</script>
+
+
+
+<script>
+  function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+          const cookies = document.cookie.split(';');
+          for (let i = 0; i < cookies.length; i++) {
+              const cookie = cookies[i].trim();
+              // Does this cookie string begin with the name we want?
+              if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+              }
+          }
+      }
+      return cookieValue;
+  }
+  var csrftoken = getCookie('csrftoken');
+
+  function changeQuantitySub(prod_id)
+  {
+     
+     
+      console.log('hello')
+      sendData();
+      console.log('hello')
+      function sendData(){
+          console.log('hello')
+          fetch('/cart/update_sub_cart',{
+              method : "POST",
+              headers : {
+                  "Content-type" : "application/json",
+                  "X-CSRFToken": csrftoken,
+              },
+              body:JSON.stringify({
+                  
+                  product:prod_id,
+                  
+              }),
+          })
+          .then(response => response.json())
+          .then((data) => { 
+            
+            document.getElementById(data.prod).value = data.quantity;
+            const refer = document.getElementById('a'+ prod_id);
+            refer.innerText = data.total;
+            
+              
+      });
+  }
+
+}
+  
+
+
+
+</script>
+
+
+{% endblock %}

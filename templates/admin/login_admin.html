@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+<title>Best Buy</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Colo Shop Template">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css'%}">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+
+<style>
+  body {
+    background-image: url(
+"https://getwallpapers.com/wallpaper/full/8/a/a/6122.jpg" );
+  }
+  
+</style>
+<body hx-target="this" hx-swap="outerHTML">
+
+<!-- Section: Design Block -->
+<section class="background" >
+
+  
+    <div class="container  px-4 py-5 px-md-5 text-center text-lg-start  ">
+      <div class="row gx-lg-5 align-items-center mb-5">
+        <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+          <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+           <b> Best Buy</b> <br />
+          </h1>
+             <h3><span style="color: hsl(218, 81%, 95%)" >Welcome back <br> Admin !</span>
+             </h3>
+          <p class="mb-4 opacity-70" style="color: hsl(218, 85%, 95%)">
+       
+          </p>
+        </div>
+  
+        <div class="col-lg-6 mb-5 mb-lg-0 position-relative " >
+          <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+          <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+  
+          <div class="card bg-glass" style="border-radius: 40px; background:url(
+            https://img.freepik.com/free-vector/gradient-dark-dynamic-lines-background_23-2148995950.jpg">
+            <div class="card-body px-4 py-5 px-md-5">
+              {% for message in messages %}
+                  <div style="color:orange">
+                     {{message}}
+                  </div>
+                    
+
+                    {% endfor %}
+             
+              <script src="https://unpkg.com/htmx.org@1.7.0" integrity="sha384-EzBXYPt0/T6gxNp0nuPtLkmRpmDBbjg6WmCUZRLXBBwYYmwAUxzlSGej0ARHX0Bo" crossorigin="anonymous"></script>
+              
+              
+              <h3 class="mb-4" style="color:white">Login</h3>
+                <form hx-post="{% url 'login_admin' %}">
+                  {% csrf_token%}
+                  <div >
+                    <label style="color:white" >Email Address</label>
+                    <input name="email" placeholder="email here" class="form-control">
+                    
+                  </div>
+                  <div class="mt-3">
+                    <label style="color:white">Password</label>
+                    <input name="password" type="password" class="form-control" placeholder="Password">
+                    
+                  </div>
+                 
+                 
+                  <button type="submit" class="btn btn-default mt-3">Submit</button>
+                </form>
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Section: Design Block -->
+
+
+
+<script src="{% static 'js/jquery-3.2.1.min.js'%}"></script>
+<script src="{% static 'styles/bootstrap4/popper.js'%}"></script>
+<script src="{% static 'styles/bootstrap4/bootstrap.min.js'%}"></script>
+<script src="{% static 'plugins/easing/easing.js'%}"></script>
+<script src="{% static 'js/custom.js'%}"></script>
+</body>
+
+</html>
