@@ -6,7 +6,7 @@ from django.views.decorators.cache import cache_control
 from django.contrib import messages,auth
 from django.contrib.auth.decorators import login_required
 import random
-from twilio.rest import Client
+#from twilio.rest import Client
 from django.contrib import messages 
 from .decorators import log_out
 from bestbuyproject.views import home

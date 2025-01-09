@@ -24,8 +24,8 @@ django-parler==2.3
 django-phonenumber-field==8.0.0
 django-rosetta==0.10.1
 django-thumbnails==0.8.0
-django-twilio==0.14.3.3
-Faker==33.3.0
+
+
 fonttools==4.55.3
 frozenlist==1.5.0
 idna==3.10
