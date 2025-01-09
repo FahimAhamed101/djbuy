@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'orders',
     'wishlist',
     'vonage',
-        'django_seed',
+  
 
     
 ]
@@ -67,7 +67,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-        'whitenoise.middleware.WhiteNoiseMiddleware',
+     
 
 ]
 
@@ -157,8 +157,8 @@ STATICFILES_DIRS = [
     os.path.join('static')
 ]"""
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",]
+"""STATICFILES_DIRS = [
+    BASE_DIR / "static",]"""
 #STATIC_ROOT  = os.path.join(BASE_DIR, 'bestbuyproject/staticfiles')
 # settings.py
 #STATIC_DIR=os.path.join(BASE_DIR,'static')
