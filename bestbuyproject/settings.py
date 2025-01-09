@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'mathfilters',
     'orders',
     'wishlist',
-    'vonage',
+   
   
 
     
