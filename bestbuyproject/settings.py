@@ -94,7 +94,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'bestbuyproject.wsgi.application'
 
-AUTH_USER_MODEL = 'accounts.Account'
+
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
@@ -110,18 +110,18 @@ AUTH_USER_MODEL = 'accounts.Account'
 
     }
 }
+
+DATABASES = {
+     'default': dj_database_url.config(
+         default=config('DATABASE_URL')
+     )
+ }"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': str(BASE_DIR / 'db.sqlite3'),
     }
-}"""
-DATABASES = {
-     'default': dj_database_url.config(
-         default=config('DATABASE_URL')
-     )
- }
-
+}
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -192,3 +192,4 @@ ACCOUNT_SECURITY_API_KEY = config('ACCOUNT_SECURITY_API_KEY')"""
 ACCOUNT_SID = config('ACCOUNT_SID')
 AUTH_TOKEN = config('AUTH_TOKEN')
 SERVICES = config('SERVICES')"""
+AUTH_USER_MODEL = 'accounts.Account'
