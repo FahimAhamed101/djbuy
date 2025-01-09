@@ -11,6 +11,8 @@ Icon
 
 # Thumbnails
 ._*
+# python manage.py dumpdata store --indent 2 > fixtures/data.json
+#python manage.py loaddata fixtures/data.json
 
 # Files that might appear on external disk
 .Spotlight-V100

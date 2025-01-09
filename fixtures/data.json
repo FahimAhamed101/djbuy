@@ -1,0 +1,24 @@
+[
+{
+  "model": "store.product",
+  "pk": 1,
+  "fields": {
+    "product_name": "shirt1",
+    "slug": "shirt1",
+    "description": "my shirt",
+    "price": 120,
+    "offer_price": 122,
+    "offer_perc": 60,
+    "image1": "https://images.pexels.com/photos/769749/pexels-photo-769749.jpeg?cs=srgb&dl=pexels-jeffreyreed-769749.jpg&fm=jpg",
+    "image2": "",
+    "image3": "",
+    "stock": 5,
+    "Is_available": true,
+    "category": 1,
+    "created_date": "2025-01-07T12:37:17.214Z",
+    "modified_date": "2025-01-07T12:37:17.214Z",
+    "product_offer": 30,
+    "Is_offer_active": true
+  }
+}
+]

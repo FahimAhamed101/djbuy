@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     'orders',
     'wishlist',
     'vonage',
+        'django_seed',
+
     
 ]
 
@@ -172,9 +174,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-RAZORPAY_KEY_ID = config('RAZORPAY_KEY_ID')
+"""RAZORPAY_KEY_ID = config('RAZORPAY_KEY_ID')
 RAZORPAY_KEY_SECRET = config('RAZORPAY_KEY_SECRET')
-ACCOUNT_SECURITY_API_KEY = config('ACCOUNT_SECURITY_API_KEY')
+ACCOUNT_SECURITY_API_KEY = config('ACCOUNT_SECURITY_API_KEY')"""
 
 
 
@@ -182,7 +184,7 @@ ACCOUNT_SECURITY_API_KEY = config('ACCOUNT_SECURITY_API_KEY')
 
 
 #twilio
-
+"""
 ACCOUNT_SID = config('ACCOUNT_SID')
 AUTH_TOKEN = config('AUTH_TOKEN')
-SERVICES = config('SERVICES')
+SERVICES = config('SERVICES')"""

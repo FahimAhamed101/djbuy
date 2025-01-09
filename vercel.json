@@ -1,0 +1,25 @@
+{
+    "builds": [
+      {
+        "src": "bestbuyproject/wsgi.py",
+        "use": "@vercel/python",
+        "config":{"maxLambdaSize":"15mb","runtime":"python3.12"}
+      },
+      {
+       "src": "bash now_build_staticfiles.sh",
+       "use": "@vercel/static-build",
+      "config": {
+        "distDir": "static"
+      }
+      }
+    ],
+    "routes": [
+    
+      {
+        "src": "/(.*)",
+        "dest": "bestbuyproject/wsgi.py"
+      }
+    ]
+
+  
+}
