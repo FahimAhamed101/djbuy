@@ -15,15 +15,14 @@ cssselect2==0.7.0
 da-vinci==0.4.0
 Django==5.0
 django-admin-thumbnails==0.2.9
-django-allauth==65.3.1
-django-cloudinary-storage==0.3.0
+
+
 django-crispy-forms==2.3
 django-extensions==3.2.3
 django-mathfilters==1.0.0
 django-parler==2.3
 django-phonenumber-field==8.0.0
 django-rosetta==0.10.1
-django-seed==0.3.1
 django-thumbnails==0.8.0
 django-twilio==0.14.3.3
 Faker==33.3.0
@@ -54,7 +53,7 @@ stripe==11.4.1
 tinycss2==1.4.0
 tinyhtml5==2.0.0
 toposort==1.10
-twilio==9.4.1
+
 typing_extensions==4.12.2
 tzdata==2024.2
 urllib3==2.3.0
