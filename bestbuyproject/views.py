@@ -57,7 +57,7 @@ def home(request):
         'cart_count':cart_count,
 
     }
-    print(MEDIA_ROOT)
+    
     return render(request,'home.html',context)
 
 
